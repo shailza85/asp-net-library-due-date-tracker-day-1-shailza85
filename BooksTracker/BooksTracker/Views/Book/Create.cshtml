@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewData["Title"] = "Create";
+    //Action/View "Create"
+    //   Will display the form to create an object.
+    //If the appropriate parameters are supplied in the query, attempt creation of the "Book" and add it to the list.
+    //If the ID is already in the list, throw an exception.
+    //Success message: "You have successfully checked out {title} until {DueDate}."
+    //Error Message: "Unable to check out book: { Exception.Message}."
+}
+<h1>Create a Book</h1>
+@{
+    if (ViewBag.Success != null)
+    {
+        <p class="alert-success"> You have successfully checked out @(ViewBag.Book.Title) until @(ViewBag.Book.DueDate).@(ViewBag.Success)</p>
+    }
+    else if (ViewBag.Error != null)
+    {
+        <p class="alert-danger">Unable to check out book @(ViewBag.Error)</p>
+    }
+}
+<form action="/Person/Create" method="get">
+    <div>
+        <label for="id">ID</label>
+        <input type="text" id="id" name="id" value="@(ViewBag.ID)" />
+    </div>
+    <div>
+        <label for="title">Title</label>
+        <input type="text" id="title" name="title" value="@(ViewBag.Title)" />
+    </div>
+    <div>
+        <label for="author">Author</label>
+        <input type="text" id="author" name="author" value="@(ViewBag.Author)" />
+    </div>
+    <div>
+        <label for="publicationDate">PublicationDate</label>
+        <input type="text" id="publicationDate" name="publicationDate" value="@(ViewBag.PublicationDate)" />
+    </div>
+    <div>
+        <label for="checkOutDate">CheckOutDate</label>
+        <input type="text" id="checkOutDate" name="checkOutDate" value="@(ViewBag.CheckOutDate)" />
+    </div>
+    <div>
+        <label for="dueDate">DueDate</label>
+        <input type="text" id="dueDate" name="dueDate" value="@(ViewBag.DueDate)" />
+    </div>
+    <div>
+        <label for="returnDate">ReturnDate</label>
+        <input type="text" id="returnDate" name="returnDate" value="@(ViewBag.ReturnDate)" />
+    </div>
+    <button type="submit">Go!</button>
+</form>
