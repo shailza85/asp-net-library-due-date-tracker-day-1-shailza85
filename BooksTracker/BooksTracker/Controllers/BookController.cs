@@ -14,7 +14,7 @@ namespace BooksTracker.Controllers
         //A public static "Books" property which is a list of "Book" objects.
         //This will be replaced by a proper database on {Day 2 assignment title}.
         static public List<Book> Books { get; set; } = new List<Book>();
-        public IActionResult Index()
+        public IActionResult Create()
         {
             return View();
         }
@@ -43,6 +43,7 @@ namespace BooksTracker.Controllers
                         DueDate = dueDate,
                         ReturnedDate = null,
                     });
+
                     ViewBag.Success = $"You have successfully checked out {title} until {dueDate} ";
                 }
                 else
@@ -84,20 +85,24 @@ namespace BooksTracker.Controllers
             return result;
         }
         // Method "ExtendDueDateForBookByID()".
+
         // Extensions are 7 days from the current date(7 days from when the user requests the extension, not 7 days past the "DueDate").
         public DateTime ExtendDueDateForBookById(int id)
         {
              DateTime DueDate = DateTime.Now.AddDays(7);
             return DueDate;
         }
+
         //Method "GetBookByID()".
         // Returns the book with the given ID from the "Books" list.
         public Book GetBookByID(int id)
         {
             return Books.Where(x => x.ID == id).Single();
         }
+
         //Method "DeleteBookByID()".
         //Removes the book with the given ID from the "Books" list.
+
         public void DeleteBookByID(int id)
         {
             Books.Remove(Books.Where(x => x.ID == id).Single());
@@ -109,12 +114,32 @@ namespace BooksTracker.Controllers
         Use conditional rendering to make a choice about using ‘is’ or ‘was’ based on today’s date.
 
          */
-       /* public Book ViewBookByID(int id)
+
+       public IActionResult ViewBookByID(string id, string title, DateTime checkOutDate)
         {
-            if (Books.CheckedOutDate.date == DateTime.Now)
-            {
-               Books.Where(Books.Where(x => x.CheckedOutDate == DateTime.Now));
+           
+            ViewBag.ID = id;
+            ViewBag.Title = title;           
+            ViewBag.CheckOutDate = checkOutDate;
+            ViewBag.DueDate = checkOutDate.AddDays(14);
+
+
+            if (ViewBag.CheckOutDate == DateTime.Now)
+            { 
+           
+
+                ViewBag.Book = GetBookByID(int.Parse(id));
+                ViewBag.Success = $"You checked out {title} on {ViewBag.CheckOutDate}, and it is due on {ViewBag.DueDate} ";
             }
-        }*/
+
+            else
+            {
+                ViewBag.Success = $"You checked out {title} on {ViewBag.CheckOutDate}, and it was due on {ViewBag.DueDate.Subtract(DateTime.Now)} ";
+            }
+
+            return View();
+        }
     }
+
+    // Code borowed: @ link https://github.com/TECHCareers-by-Manpower/4.1-MVC/tree/master/MVC_4Point1
 }

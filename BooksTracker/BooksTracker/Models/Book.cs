@@ -42,11 +42,13 @@ namespace BooksTracker.Models
          */
 
         private string _title;
-        public string Title { get
+        public string Title
+        {
+            get
             {
                 return _title;
             }
-                }
+        }
 
         private DateTime _publicationdate;
         public DateTime PublicationDate
@@ -63,15 +65,18 @@ namespace BooksTracker.Models
         public DateTime? ReturnedDate { get; set; }
 
         private string _author;
-        public string Author { 
-                get
+        public string Author
+        {
+            get
             {
                 return _author;
             }
         }
 
         private int _id;
-        public int ID { get
+        public int ID
+        {
+            get
             {
                 return _id;
             }
@@ -82,17 +87,17 @@ namespace BooksTracker.Models
         {
             this._id = 1;
             this._title = "Nineteen Eighty-Four";
-            this._author = "George Orwell"; 
-            this._publicationdate = new DateTime(1996 / 08 / 01);
-            CheckedOutDate = new DateTime(2020 / 09 / 21);
+            this._author = "George Orwell";
+            this._publicationdate = new DateTime(1949/06/08);
+            CheckedOutDate = new DateTime(2020/09/20);
             DueDate = CheckedOutDate.AddDays(14);
             ReturnedDate = null;
 
         }
 
-        public Book(int id,string title, string author, DateTime publicationDate, DateTime checkoutdate)
+        public Book(int id, string title, string author, DateTime publicationDate, DateTime checkoutdate)
         {
-            this._id= id;
+            this._id = id;
             this._title = title;
             this._author = author;
             this._publicationdate = publicationDate;
@@ -101,18 +106,8 @@ namespace BooksTracker.Models
 
         }
 
-        public static void ExtendDueDateForBookByID()
-        {
-           
-
-        }
-
-        public static void CreateBook()
-        {
-
-        }
-
     }
-
-    
 }
+
+
+// Code borowed: @ link https://github.com/TECHCareers-by-Manpower/4.1-MVC/tree/master/MVC_4Point1

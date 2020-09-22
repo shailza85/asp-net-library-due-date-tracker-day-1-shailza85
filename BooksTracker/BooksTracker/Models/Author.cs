@@ -30,7 +30,7 @@ namespace BooksTracker.Models
             }
         }
 
-
-
     }
 }
+
+//Code borowed: @ link https://github.com/TECHCareers-by-Manpower/4.1-MVC/tree/master/MVC_4Point1

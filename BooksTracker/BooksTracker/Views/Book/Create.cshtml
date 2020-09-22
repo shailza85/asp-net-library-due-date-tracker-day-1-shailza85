@@ -1,14 +1,12 @@
 ﻿
-@{
-    ViewData["Title"] = "Create";
-    //Action/View "Create"
+<h1>Create a Book</h1>
+
+ <!-- //Action/View "Create"
     //   Will display the form to create an object.
     //If the appropriate parameters are supplied in the query, attempt creation of the "Book" and add it to the list.
     //If the ID is already in the list, throw an exception.
     //Success message: "You have successfully checked out {title} until {DueDate}."
-    //Error Message: "Unable to check out book: { Exception.Message}."
-}
-<h1>Create a Book</h1>
+    //Error Message: "Unable to check out book: { Exception.Message}." -->
 @{
     if (ViewBag.Success != null)
     {
@@ -19,7 +17,7 @@
         <p class="alert-danger">Unable to check out book @(ViewBag.Error)</p>
     }
 }
-<form action="/Person/Create" method="get">
+<form action="/Book/Create" method="get">
     <div>
         <label for="id">ID</label>
         <input type="text" id="id" name="id" value="@(ViewBag.ID)" />
@@ -48,5 +46,7 @@
         <label for="returnDate">ReturnDate</label>
         <input type="text" id="returnDate" name="returnDate" value="@(ViewBag.ReturnDate)" />
     </div>
-    <button type="submit">Go!</button>
+    <button type="submit">Add Book</button>
 </form>
+
+<!-- // Code borowed: https://github.com/TECHCareers-by-Manpower/4.1-MVC/tree/master/MVC_4Point1 -->
