@@ -14,10 +14,10 @@ namespace BooksTracker.Controllers
         //A public static "Books" property which is a list of "Book" objects.
         //This will be replaced by a proper database on {Day 2 assignment title}.
         static public List<Book> Books { get; set; } = new List<Book>();
-        public IActionResult Create()
+      /*  public IActionResult Create()
         {
             return View();
-        }
+        }*/
         /**
          * Method "CreateBook()".
             Accepts the same parameters as the "Book" constructor.
@@ -25,7 +25,7 @@ namespace BooksTracker.Controllers
             Ensures the provided ID is unique in the list.
             Throw an exception if the ID already exists.
          */
-        public IActionResult CreateBook(string id, string title, string author, DateTime publicationDate, DateTime checkOutDate, DateTime dueDate)
+        public IActionResult Create(string id, string title, string author, DateTime publicationDate, DateTime checkOutDate, DateTime dueDate)
         {
             // A request has come in that has some data stored in the query (GET or POST).
             if (Request.Query.Count > 0)
@@ -84,6 +84,7 @@ namespace BooksTracker.Controllers
             }
             return result;
         }
+
         // Method "ExtendDueDateForBookByID()".
 
         // Extensions are 7 days from the current date(7 days from when the user requests the extension, not 7 days past the "DueDate").

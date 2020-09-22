@@ -1,16 +1,16 @@
 ﻿
 <h1>Create a Book</h1>
 
- <!-- //Action/View "Create"
-    //   Will display the form to create an object.
-    //If the appropriate parameters are supplied in the query, attempt creation of the "Book" and add it to the list.
-    //If the ID is already in the list, throw an exception.
-    //Success message: "You have successfully checked out {title} until {DueDate}."
-    //Error Message: "Unable to check out book: { Exception.Message}." -->
+<!-- //Action/View "Create"
+   //   Will display the form to create an object.
+   //If the appropriate parameters are supplied in the query, attempt creation of the "Book" and add it to the list.
+   //If the ID is already in the list, throw an exception.
+   //Success message: "You have successfully checked out {title} until {DueDate}."
+   //Error Message: "Unable to check out book: { Exception.Message}." -->
 @{
     if (ViewBag.Success != null)
     {
-        <p class="alert-success"> You have successfully checked out @(ViewBag.Book.Title) until @(ViewBag.Book.DueDate).@(ViewBag.Success)</p>
+        <p class="alert-success"> You have successfully checked out: @(ViewBag.Success)</p>
     }
     else if (ViewBag.Error != null)
     {

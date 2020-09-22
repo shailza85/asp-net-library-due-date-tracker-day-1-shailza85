@@ -3,15 +3,10 @@
     ViewData["Title"] = "List";
 }
 
-<h1>List</h1>
-
-
-<!--Render a list of all books as links that will load the "Details" Action/View.-->
-
 <h1>List of Books</h1>
 @foreach (Book book in ViewBag.Book)
 {
-    <a href="/Book/Details?id=@(book.ID)"><p>@(book.Title)</p><p>@(book.Author)</p><p>@(book.PublicationDate)</p><p>@(book.CheckedOutDate)</p><p>@(book.DueDate)</p></a>
+    <a href="/Book/Details?id=@(book.ID)"><p>@(book.Title)</p></a>
 }
 
 <!-- // Code borowed: https://github.com/TECHCareers-by-Manpower/4.1-MVC/tree/master/MVC_4Point1 -->
