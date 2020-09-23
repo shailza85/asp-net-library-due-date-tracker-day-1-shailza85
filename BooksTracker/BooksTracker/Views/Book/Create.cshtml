@@ -1,22 +1,19 @@
-﻿
-<h1>Create a Book</h1>
+﻿@{
+    ViewData["Title"] = "Create";
+}
 
-<!-- //Action/View "Create"
-   //   Will display the form to create an object.
-   //If the appropriate parameters are supplied in the query, attempt creation of the "Book" and add it to the list.
-   //If the ID is already in the list, throw an exception.
-   //Success message: "You have successfully checked out {title} until {DueDate}."
-   //Error Message: "Unable to check out book: { Exception.Message}." -->
+<h1>Create</h1>
 @{
     if (ViewBag.Success != null)
     {
-        <p class="alert-success"> You have successfully checked out: @(ViewBag.Success)</p>
+        <p class="alert-success">@(ViewBag.Success)</p>
     }
     else if (ViewBag.Error != null)
     {
-        <p class="alert-danger">Unable to check out book @(ViewBag.Error)</p>
+        <p class="alert-danger">@(ViewBag.Error)</p>
     }
 }
+
 <form action="/Book/Create" method="get">
     <div>
         <label for="id">ID</label>
@@ -24,29 +21,21 @@
     </div>
     <div>
         <label for="title">Title</label>
-        <input type="text" id="title" name="title" value="@(ViewBag.Title)" />
+        <input type="text" id="title" name="title" value="@(ViewBag.BookTitle)" />
     </div>
     <div>
         <label for="author">Author</label>
         <input type="text" id="author" name="author" value="@(ViewBag.Author)" />
     </div>
     <div>
-        <label for="publicationDate">PublicationDate</label>
+        <label for="publicationDate">Publication Date</label>
         <input type="text" id="publicationDate" name="publicationDate" value="@(ViewBag.PublicationDate)" />
     </div>
     <div>
-        <label for="checkOutDate">CheckOutDate</label>
-        <input type="text" id="checkOutDate" name="checkOutDate" value="@(ViewBag.CheckOutDate)" />
+        <label for="checkedOutDate">Checked Out Date</label>
+        <input type="text" id="checkedOutDate" name="checkedOutDate" value="@(ViewBag.CheckedOutDate)" />
     </div>
-    <div>
-        <label for="dueDate">DueDate</label>
-        <input type="text" id="dueDate" name="dueDate" value="@(ViewBag.DueDate)" />
-    </div>
-    <div>
-        <label for="returnDate">ReturnDate</label>
-        <input type="text" id="returnDate" name="returnDate" value="@(ViewBag.ReturnDate)" />
-    </div>
-    <button type="submit">Add Book</button>
+    <button type="submit">Go!</button>
 </form>
-
 <!-- // Code borowed: https://github.com/TECHCareers-by-Manpower/4.1-MVC/tree/master/MVC_4Point1 -->
+<!-- //https://github.com/TECHCareers-by-Manpower/4.1-MVC/blob/Sep21Practice/MVC_4Point1/Views/Book/Create.cshtml-->
